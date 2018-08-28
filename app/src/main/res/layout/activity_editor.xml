@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="16dp">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Nome do livro:" />
+
+        <EditText
+            android:id="@+id/edit_book_name"
+            style="@style/EditorFieldStyle"
+            android:inputType="textCapWords"
+            android:hint="O Sofista"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="16dp">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Preço: R$" />
+
+        <EditText
+            android:id="@+id/edit_book_price"
+            style="@style/EditorFieldStyle"
+            android:inputType="numberDecimal"
+            android:hint="12.50"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="16dp">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Quantidade:" />
+
+        <EditText
+            android:id="@+id/edit_book_qunatity"
+            style="@style/EditorFieldStyle"
+            android:inputType="number"
+            android:hint="18"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="16dp">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Fornecedor:" />
+
+        <EditText
+            android:id="@+id/edit_book_supplier"
+            style="@style/EditorFieldStyle"
+            android:inputType="textCapWords"
+            android:hint="Editora Atlas"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:orientation="horizontal">
+
+        <TextView
+            style="@style/CategoryStyle"
+            android:text="Tel do fornecedor:" />
+
+        <EditText
+            android:id="@+id/edit_book_phone"
+            style="@style/EditorFieldStyle"
+            android:inputType="phone"
+            android:digits="0123456789+"
+            android:hint="999999999"/>
+
+    </LinearLayout>
+
+</LinearLayout>

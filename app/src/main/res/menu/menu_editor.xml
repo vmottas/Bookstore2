@@ -6,8 +6,8 @@
 
     <item
         android:id="@+id/action_save"
-        android:title="action_save"
         android:icon="@drawable/round_done_black_24"
+        android:title="action_save"
         app:showAsAction="always" />
 
     <item

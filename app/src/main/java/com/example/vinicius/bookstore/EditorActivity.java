@@ -65,19 +65,19 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         mCurrentBookUri = intent.getData();
 
         if (mCurrentBookUri == null) {
-            setTitle("Add a book!");
+            setTitle(getString(R.string.title_add));
             invalidateOptionsMenu();
         } else {
-            setTitle("Edit Book");
+            setTitle(getString(R.string.title_edit));
 
             getLoaderManager().initLoader(EXISTING_BOOK_LOADER, null, this);
         }
 
-        mNameEditText = (EditText) findViewById(R.id.edit_book_name);
-        mPriceEditText = (EditText) findViewById(R.id.edit_book_price);
-        mQuantityEditText = (EditText) findViewById(R.id.edit_book_qunatity);
-        mSupplierNameEditText = (EditText) findViewById(R.id.edit_book_supplier);
-        mSupplierTelEditText = (EditText) findViewById(R.id.edit_book_phone);
+        mNameEditText = findViewById(R.id.edit_book_name);
+        mPriceEditText = findViewById(R.id.edit_book_price);
+        mQuantityEditText = findViewById(R.id.edit_book_qunatity);
+        mSupplierNameEditText = findViewById(R.id.edit_book_supplier);
+        mSupplierTelEditText = findViewById(R.id.edit_book_phone);
     }
 
     private void saveBook() {
@@ -177,7 +177,6 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
         }
         return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -312,27 +311,27 @@ public class EditorActivity extends AppCompatActivity implements LoaderManager.L
     private void displayError() {
         if (TextUtils.isEmpty(mNameEditText.getText().toString().trim())) {
             mNameEditText.requestFocus();
-            mNameEditText.setError("Book name is required!");
+            mNameEditText.setError(getString(R.string.set_erro_name));
         }
 
         if (TextUtils.isEmpty(mPriceEditText.getText().toString().trim())) {
             mPriceEditText.requestFocus();
-            mPriceEditText.setError("Book requires a price!");
+            mPriceEditText.setError(getString(R.string.set_erro_price));
         }
 
         if (TextUtils.isEmpty(mQuantityEditText.getText().toString().trim())) {
             mQuantityEditText.requestFocus();
-            mQuantityEditText.setError("Please input the quantity!");
+            mQuantityEditText.setError(getString(R.string.set_erro_quantity));
         }
 
         if (TextUtils.isEmpty(mSupplierNameEditText.getText().toString().trim())) {
             mSupplierNameEditText.requestFocus();
-            mSupplierNameEditText.setError("Please input the the supplier name!");
+            mSupplierNameEditText.setError(getString(R.string.set_erro_supplier));
         }
 
-        if (TextUtils.isEmpty(mSupplierNameEditText.getText().toString().trim())) {
-            mSupplierNameEditText.requestFocus();
-            mSupplierTelEditText.setError("Please input the supplier's phone!");
+        if (TextUtils.isEmpty(mSupplierTelEditText.getText().toString().trim())) {
+            mSupplierTelEditText.requestFocus();
+            mSupplierTelEditText.setError(getString(R.string.set_erro_supllier_tel));
         }
     }
 

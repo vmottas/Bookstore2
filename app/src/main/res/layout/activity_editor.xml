@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:padding="16dp">
 
     <LinearLayout
@@ -18,8 +18,8 @@
         <EditText
             android:id="@+id/edit_book_name"
             style="@style/EditorFieldStyle"
-            android:inputType="textCapWords"
-            android:hint="O Sofista"/>
+            android:hint="O Sofista"
+            android:inputType="textCapWords" />
 
     </LinearLayout>
 
@@ -36,8 +36,8 @@
         <EditText
             android:id="@+id/edit_book_price"
             style="@style/EditorFieldStyle"
-            android:inputType="numberDecimal"
-            android:hint="12.50"/>
+            android:hint="12.50"
+            android:inputType="numberDecimal" />
 
     </LinearLayout>
 
@@ -54,8 +54,8 @@
         <EditText
             android:id="@+id/edit_book_qunatity"
             style="@style/EditorFieldStyle"
-            android:inputType="number"
-            android:hint="18"/>
+            android:hint="18"
+            android:inputType="number" />
 
     </LinearLayout>
 
@@ -72,15 +72,14 @@
         <EditText
             android:id="@+id/edit_book_supplier"
             style="@style/EditorFieldStyle"
-            android:inputType="textCapWords"
-            android:hint="Editora Atlas"/>
+            android:hint="Editora Atlas"
+            android:inputType="textCapWords" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="32dp"
         android:orientation="horizontal">
 
         <TextView
@@ -90,9 +89,9 @@
         <EditText
             android:id="@+id/edit_book_phone"
             style="@style/EditorFieldStyle"
-            android:inputType="phone"
             android:digits="0123456789+"
-            android:hint="999999999"/>
+            android:hint="999999999"
+            android:inputType="phone" />
 
     </LinearLayout>
 

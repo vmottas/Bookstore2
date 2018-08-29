@@ -2,22 +2,44 @@
     <string name="app_name">Bookstore</string>
     <string name="empty_view">Ainda não temos livros! :( \n Clique em adicionar para inserir um...</string>
 
-    <string name="save_error">Error with saving book</string>
-    <string name="save_done">Book Saved</string>
-    <string name="update_error">Error with updating book</string>
-    <string name="update_done">Book updated</string>
-    <string name="delete_error">Error with deleting book</string>
-    <string name="delete_done">Book deleted</string>
+    <string name="save_error">Erro ao salvar o livro</string>
+    <string name="save_done">Livro salvo!</string>
+    <string name="update_error">Erro ao atualizar o livro!</string>
+    <string name="update_done">Livro atualizado!</string>
+    <string name="delete_error">Erro ao apagar o livro!</string>
+    <string name="delete_done">Livro apagado!</string>
 
-    <string name="discard_changes">Discard your changes and quit editing?</string>
-    <string name="dc_yes">Discard</string>
-    <string name="dc_no">Keep Editing</string>
+    <string name="discard_changes">Descartar as mudanças e sair do editor?</string>
+    <string name="dc_yes">Descatar</string>
+    <string name="dc_no">Continuar no editor</string>
 
-    <string name="book_delete_dialog">Delete this book?</string>
-    <string name="bdd_yes">Delete</string>
-    <string name="bdd_no">Cancel</string>
+    <string name="book_delete_dialog">Aapagar esse livro</string>
+    <string name="bdd_yes">Apagar</string>
+    <string name="bdd_no">Cancelar</string>
 
-    <string name="invalid_price">The book\'s price is invalid</string>
+    <string name="invalid_price">Preço do livro inválido.</string>
 
-    <string name="bigger_than_zero">The quantity should be bigger than zero.</string>
+    <string name="bigger_than_zero">A quantidade deve ser maior que 0.</string>
+
+    <string name="set_erro_name">É necessário preencher o nome do livro!</string>
+    <string name="set_erro_price">É necessário preencher o preço!</string>
+    <string name="set_erro_quantity">É necessário preencher a quantidade!</string>
+    <string name="set_erro_supplier">É necessário preencher o nome do fornecedor!</string>
+    <string name="set_erro_supllier_tel">É necessário preencher o telefone do fornecedor!</string>
+
+    <string name="title_add">Adicione um livro</string>
+    <string name="title_edit">Atualize os dados do livro</string>
+
+    <string name="error_proceeding">Erro ao adicionar um livro</string>
+    <string name="book_added">Livro adicionado</string>
+    <string name="book_sold">Livro vendido</string>
+    <string name="book_no_enought">Não há livros em estoque</string>
+
+    <string name="ex_name">O Sofista</string>
+    <string name="ex_price">12.5</string>
+    <string name="ex_quantity">8</string>
+    <string name="ex_supplier">Atlas Editora</string>
+    <string name="ex_supplier_tel">999999999</string>
+    <string name="ex_minus">-</string>
+    <string name="ex_add">+</string>
 </resources>

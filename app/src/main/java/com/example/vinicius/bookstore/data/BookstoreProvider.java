@@ -23,7 +23,7 @@ import static com.example.vinicius.bookstore.data.BookstoreContract.BookstoreEnt
 import static com.example.vinicius.bookstore.data.BookstoreContract.CONTENT_AUTHORITY;
 
 
-public class BookstoreProvider extends ContentProvider{
+public class BookstoreProvider extends ContentProvider {
 
     public static final String LOG_TAG = BookstoreProvider.class.getSimpleName();
     private static final int BOOKS = 100;
@@ -125,7 +125,7 @@ public class BookstoreProvider extends ContentProvider{
 
         getContext().getContentResolver().notifyChange(uri, null);
 
-        return ContentUris.withAppendedId(uri,id);
+        return ContentUris.withAppendedId(uri, id);
     }
 
     @Override
@@ -134,21 +134,21 @@ public class BookstoreProvider extends ContentProvider{
         int rowsDeleted;
 
         final int match = sUriMatcher.match(uri);
-        switch (match){
+        switch (match) {
             case BOOKS:
-                rowsDeleted = db.delete(TABLE_NAME,selection,selectionArgs);
+                rowsDeleted = db.delete(TABLE_NAME, selection, selectionArgs);
                 break;
             case BOOK_ID:
                 selection = _ID + "=?";
-                selectionArgs = new String[] {String.valueOf(ContentUris.parseId(uri))};
-                rowsDeleted = db.delete(TABLE_NAME,selection,selectionArgs);
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
+                rowsDeleted = db.delete(TABLE_NAME, selection, selectionArgs);
                 break;
             default:
                 throw new IllegalArgumentException("Delation is not supported for " + uri);
         }
 
-        if(rowsDeleted != 0) {
-            getContext().getContentResolver().notifyChange(uri,null);
+        if (rowsDeleted != 0) {
+            getContext().getContentResolver().notifyChange(uri, null);
         }
 
         return rowsDeleted;
@@ -157,18 +157,19 @@ public class BookstoreProvider extends ContentProvider{
     @Override
     public int update(@NonNull Uri uri, @Nullable ContentValues values, @Nullable String selection, @Nullable String[] selectionArgs) {
         final int match = sUriMatcher.match(uri);
-        switch (match){
+        switch (match) {
             case BOOKS:
-                return updateBook(uri, values,selection,selectionArgs);
+                return updateBook(uri, values, selection, selectionArgs);
             case BOOK_ID:
                 selection = _ID + "=?";
-                selectionArgs = new String[] { String.valueOf(ContentUris.parseId(uri)) };
+                selectionArgs = new String[]{String.valueOf(ContentUris.parseId(uri))};
                 return updateBook(uri, values, selection, selectionArgs);
             default:
                 throw new IllegalArgumentException("Update is not supported for " + uri);
         }
     }
-    private int updateBook(Uri uri, ContentValues values, String selection, String[] selectionArgs){
+
+    private int updateBook(Uri uri, ContentValues values, String selection, String[] selectionArgs) {
         String name = values.getAsString(COLUMN_BOOK_NAME);
         if (name == null) throw new IllegalArgumentException("Book requires a name");
 
@@ -187,14 +188,14 @@ public class BookstoreProvider extends ContentProvider{
         if (quantity < 0 || quantity == null)
             throw new IllegalArgumentException("The book's quantity is invalid");
 
-        if(values.size() == 0) return 0;
+        if (values.size() == 0) return 0;
 
         SQLiteDatabase db = mDbHelper.getWritableDatabase();
 
-        int rowsUpdated = db.update(TABLE_NAME,values,selection,selectionArgs);
+        int rowsUpdated = db.update(TABLE_NAME, values, selection, selectionArgs);
 
-        if(rowsUpdated != 0) {
-            getContext().getContentResolver().notifyChange(uri,null);
+        if (rowsUpdated != 0) {
+            getContext().getContentResolver().notifyChange(uri, null);
         }
 
         return rowsUpdated;

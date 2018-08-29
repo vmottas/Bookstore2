@@ -14,7 +14,8 @@ public final class BookstoreContract {
     public static final Uri BASE_CONTENT_URI = Uri.parse("content://" + CONTENT_AUTHORITY);
     public final static String COLUMN_KEY = _ID;
 
-    private BookstoreContract(){}
+    private BookstoreContract() {
+    }
 
     public static final class BookstoreEntry implements BaseColumns {
 

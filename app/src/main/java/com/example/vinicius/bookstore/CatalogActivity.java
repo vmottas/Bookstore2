@@ -2,12 +2,10 @@ package com.example.vinicius.bookstore;
 
 import android.app.LoaderManager;
 import android.content.ContentUris;
-import android.content.ContentValues;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,12 +17,11 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 
-import com.example.vinicius.bookstore.data.BookstoreContract;
-import com.example.vinicius.bookstore.data.BookstoreDbHelper;
-
 import static com.example.vinicius.bookstore.data.BookstoreContract.BookstoreEntry.COLUMN_BOOK_NAME;
 import static com.example.vinicius.bookstore.data.BookstoreContract.BookstoreEntry.COLUMN_BOOK_PRICE;
 import static com.example.vinicius.bookstore.data.BookstoreContract.BookstoreEntry.COLUMN_BOOK_QUANTITY;
+import static com.example.vinicius.bookstore.data.BookstoreContract.BookstoreEntry.COLUMN_SUPPLIER_NAME;
+import static com.example.vinicius.bookstore.data.BookstoreContract.BookstoreEntry.COLUMN_SUPPLIER_TEL;
 import static com.example.vinicius.bookstore.data.BookstoreContract.BookstoreEntry.CONTENT_URI;
 import static com.example.vinicius.bookstore.data.BookstoreContract.BookstoreEntry._ID;
 
@@ -32,9 +29,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
     public final static String LOG_TAG = CatalogActivity.class.getSimpleName();
     public final static int BOOK_LOADER = 0;
-    private BookstoreDbHelper mDbHelper;
     private BookstoreCursorAdapter mCursorAdapter;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +44,7 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
             }
         });
 
-        ListView bookListView = (ListView) findViewById(R.id.list);
+        ListView bookListView = findViewById(R.id.list);
         View emptyView = findViewById(R.id.empty_view);
         bookListView.setEmptyView(emptyView);
 
@@ -60,11 +55,8 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(CatalogActivity.this, EditorActivity.class);
-
                 Uri currentBookUri = ContentUris.withAppendedId(CONTENT_URI, id);
-
                 intent.setData(currentBookUri);
-
                 startActivity(intent);
             }
         });
@@ -73,22 +65,9 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
 
     }
 
-    //Inserir dados no BD
-    private void insertBook() {
-
-        ContentValues values = new ContentValues();
-        values.put(BookstoreContract.BookstoreEntry.COLUMN_BOOK_NAME,"O Sofista");
-        values.put(BookstoreContract.BookstoreEntry.COLUMN_BOOK_PRICE,"120");
-        values.put(BookstoreContract.BookstoreEntry.COLUMN_BOOK_QUANTITY, "4");
-        values.put(BookstoreContract.BookstoreEntry.COLUMN_SUPPLIER_NAME,"AMAZON");
-        values.put(BookstoreContract.BookstoreEntry.COLUMN_SUPPLIER_TEL, "55555555");
-
-        Uri newUri = getContentResolver().insert(CONTENT_URI, values);
-    }
-
     private void deleteAllBooks() {
         int rowsDeleted = getContentResolver().delete(CONTENT_URI, null, null);
-        Log.v("CatalogActivity", rowsDeleted + " rows deleted from the database");
+        Log.v(LOG_TAG, rowsDeleted + " rows deleted from the database");
     }
 
     @Override
@@ -98,11 +77,8 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item){
-        switch (item.getItemId()){
-            case R.id.action_insert_dummy_data:
-                insertBook();
-                return true;
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
             case R.id.action_delete_all_entries:
                 deleteAllBooks();
                 return true;
@@ -116,7 +92,9 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
                 _ID,
                 COLUMN_BOOK_NAME,
                 COLUMN_BOOK_PRICE,
-                COLUMN_BOOK_QUANTITY};
+                COLUMN_BOOK_QUANTITY,
+                COLUMN_SUPPLIER_NAME,
+                COLUMN_SUPPLIER_TEL};
 
         return new CursorLoader(this,
                 CONTENT_URI,
@@ -136,10 +114,3 @@ public class CatalogActivity extends AppCompatActivity implements LoaderManager.
         mCursorAdapter.swapCursor(null);
     }
 }
-
-
-
-
-
-
-
